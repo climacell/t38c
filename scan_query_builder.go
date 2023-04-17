@@ -85,7 +85,7 @@ func (query ScanQueryBuilder) Where(field string, min, max float64) ScanQueryBui
 }
 
 // Wherein is similar to Where except that it checks whether the object’s field value is in a given list.
-func (query ScanQueryBuilder) Wherein(field string, values ...float64) ScanQueryBuilder {
+func (query ScanQueryBuilder) Wherein(field string, values ...fieldValue) ScanQueryBuilder {
 	query.opts.Wherein = append(query.opts.Wherein, whereinOpt{
 		Field:  field,
 		Values: values,

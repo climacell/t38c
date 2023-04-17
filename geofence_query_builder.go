@@ -153,7 +153,7 @@ func (query GeofenceQueryBuilder) Where(field string, min, max float64) Geofence
 }
 
 // Wherein is similar to Where except that it checks whether the object’s field value is in a given list.
-func (query GeofenceQueryBuilder) Wherein(field string, values ...float64) GeofenceQueryBuilder {
+func (query GeofenceQueryBuilder) Wherein(field string, values ...fieldValue) GeofenceQueryBuilder {
 	query.searchOpts.Wherein = append(query.searchOpts.Wherein, whereinOpt{
 		Field:  field,
 		Values: values,

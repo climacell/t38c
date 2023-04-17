@@ -10,8 +10,10 @@ import (
 
 type field struct {
 	Name  string
-	Value float64
+	Value fieldValue
 }
+
+type fieldValue any
 
 // KeyStats is a tile38 key stats.
 type KeyStats struct {
@@ -69,28 +71,28 @@ type SearchResponse struct {
 	Count   int      `json:"count"`
 	Fields  []string `json:"fields,omitempty"`
 	Objects []struct {
-		ID       string    `json:"ID"`
-		Object   Object    `json:"object"`
-		Fields   []float64 `json:"fields,omitempty"`
-		Distance *float64  `json:"distance,omitempty"`
+		ID       string       `json:"ID"`
+		Object   Object       `json:"object"`
+		Fields   []fieldValue `json:"fields,omitempty"`
+		Distance *float64     `json:"distance,omitempty"`
 	} `json:"objects,omitempty"`
 	Points []struct {
-		ID       string    `json:"ID"`
-		Point    Point     `json:"point"`
-		Fields   []float64 `json:"fields,omitempty"`
-		Distance *float64  `json:"distance,omitempty"`
+		ID       string       `json:"ID"`
+		Point    Point        `json:"point"`
+		Fields   []fieldValue `json:"fields,omitempty"`
+		Distance *float64     `json:"distance,omitempty"`
 	} `json:"points,omitempty"`
 	Bounds []struct {
-		ID       string    `json:"ID"`
-		Bounds   Bounds    `json:"bounds"`
-		Fields   []float64 `json:"fields,omitempty"`
-		Distance *float64  `json:"distance,omitempty"`
+		ID       string       `json:"ID"`
+		Bounds   Bounds       `json:"bounds"`
+		Fields   []fieldValue `json:"fields,omitempty"`
+		Distance *float64     `json:"distance,omitempty"`
 	} `json:"bounds,omitempty"`
 	Hashes []struct {
-		ID       string    `json:"id"`
-		Hash     string    `json:"hash"`
-		Fields   []float64 `json:"fields,omitempty"`
-		Distance *float64  `json:"distance,omitempty"`
+		ID       string       `json:"id"`
+		Hash     string       `json:"hash"`
+		Fields   []fieldValue `json:"fields,omitempty"`
+		Distance *float64     `json:"distance,omitempty"`
 	} `json:"hashes,omitempty"`
 	IDs []string `json:"ids,omitempty"`
 }

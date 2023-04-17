@@ -89,7 +89,7 @@ func (query InwQueryBuilder) Where(field string, min, max float64) InwQueryBuild
 }
 
 // Wherein is similar to Where except that it checks whether the object’s field value is in a given list.
-func (query InwQueryBuilder) Wherein(field string, values ...float64) InwQueryBuilder {
+func (query InwQueryBuilder) Wherein(field string, values ...fieldValue) InwQueryBuilder {
 	query.searchOpts.Wherein = append(query.searchOpts.Wherein, whereinOpt{
 		Field:  field,
 		Values: values,

@@ -10,7 +10,7 @@ type whereOpt struct {
 
 type whereinOpt struct {
 	Field  string
-	Values []float64
+	Values []fieldValue
 }
 
 type whereEvalOpt struct {
@@ -42,7 +42,7 @@ func (opts searchOpts) Args() (args []string) {
 	for _, opt := range opts.Wherein {
 		values := make([]string, len(opt.Values))
 		for i, val := range opt.Values {
-			values[i] = floatString(val)
+			values[i] = fieldValueString(val)
 		}
 		args = append(args, "WHEREIN", opt.Field)
 		args = append(args, strconv.Itoa(len(opt.Values)))

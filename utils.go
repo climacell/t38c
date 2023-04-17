@@ -24,6 +24,23 @@ func (c cmd) String() string {
 	return str
 }
 
+func fieldValueString(val fieldValue) string {
+	var ret string
+	switch val.(type) {
+	case float64:
+		ret = strconv.FormatFloat(val.(float64), 'f', -1, 64)
+	case float32:
+		ret = strconv.FormatFloat(val.(float64), 'f', -1, 32)
+	default:
+		bval, err := json.Marshal(val)
+		if err != nil {
+			return ""
+		}
+		ret = string(bval)
+	}
+	return ret
+}
+
 func floatString(val float64) string {
 	return strconv.FormatFloat(val, 'f', -1, 64)
 }

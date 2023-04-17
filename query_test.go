@@ -53,10 +53,12 @@ func TestHooks(t *testing.T) {
 func TestSearch(t *testing.T) {
 	search := &Search{}
 	tests := []struct {
+		name     string
 		Cmd      cmd
 		Expected string
 	}{
 		{
+			name: "first",
 			Cmd: search.Nearby("fleet", 10, 20, 30).
 				Where("speed", 10, 20).
 				Wherein("speed", 10, 20, 30).
@@ -95,7 +97,10 @@ func TestSearch(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		assert.Equal(t, test.Expected, test.Cmd.String())
+		t.Run(test.name, func(t *testing.T) {
+			assert.Equal(t, test.Expected, test.Cmd.String())
+		})
+
 	}
 }
 

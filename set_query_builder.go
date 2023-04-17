@@ -41,7 +41,7 @@ func (query SetQueryBuilder) toCmd() cmd {
 	}
 
 	for _, field := range query.fields {
-		args = append(args, "FIELD", field.Name, floatString(field.Value))
+		args = append(args, "FIELD", field.Name, fieldValueString(field.Value))
 	}
 
 	args = append(args, query.area.Name)
@@ -56,7 +56,7 @@ func (query SetQueryBuilder) Do(ctx context.Context) error {
 }
 
 // Field sets the object field
-func (query SetQueryBuilder) Field(name string, value float64) SetQueryBuilder {
+func (query SetQueryBuilder) Field(name string, value fieldValue) SetQueryBuilder {
 	query.fields = append(query.fields, field{name, value})
 	return query
 }
