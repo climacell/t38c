@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
+	"github.com/climacell/t38c"
 	geojson "github.com/paulmach/go.geojson"
 	"github.com/stretchr/testify/require"
-	"github.com/xjem/t38c"
 )
 
 func testWithin(t *testing.T, client *t38c.Client) {

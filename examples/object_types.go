@@ -7,8 +7,8 @@ import (
 	"context"
 	"log"
 
+	"github.com/climacell/t38c"
 	geojson "github.com/paulmach/go.geojson"
-	"github.com/xjem/t38c"
 )
 
 func main() {
